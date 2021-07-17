@@ -1,0 +1,50 @@
+.Navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 10%;
+    &__list {
+        list-style : none;
+        justify-content: space-between;
+
+        &__item {
+            margin-left: 1rem;
+            width: 90%;
+            border-radius: 2px;
+            margin-left: auto;
+            a {
+                display: block;
+                width: 100%;
+                padding: .5rem;
+                
+            }
+
+            &--icon {
+                width: 100%;
+            }
+            svg {
+                font-size: 1.5rem;
+            }
+        }
+
+        &__item:hover,&__item.active {
+            cursor: pointer;
+            background-color: #fff;
+            transition: all .2s ease-out;
+            svg {
+                color: blue;
+            }
+        }
+    }
+
+    &__options {
+       font-size: 14px;
+       margin-bottom: 5rem;
+       li:hover  {
+        cursor: pointer;
+        transition: all .2s ease-out;
+        color:blue;
+       }
+    }
+}
