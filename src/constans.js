@@ -165,7 +165,7 @@ export const icon_array = [
     },
     {
         icon: mark_icon,
-        title: 'New followers',
+        title: 'Followers',
     },
     {
         icon: perform_icon,
