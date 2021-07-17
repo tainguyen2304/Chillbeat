@@ -41,7 +41,7 @@ const ButtonGroupStyled = styled.div`
 `;
 
 const WrapperStyled = styled.div`
-  height: 80vh;
+  height: 70vh;
   border: 1px solid #000;
   border-radius: 4px;
   background:#fff;

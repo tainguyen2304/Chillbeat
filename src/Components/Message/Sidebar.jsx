@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const SidebarStyled = styled.div`
   color: #333;
-  height: 80vh;
+  height: 70vh;
   border: 1px solid #000;
   border-radius: 4px;
 `;
