@@ -20,7 +20,7 @@ function Earning(props) {
     const dataMusic = useFirestore('MusicFavorite')
     const unActive = ' Music-item px-3';
     const Active = ' Music-item px-3 activeMusic ';
-    const iconCurrent = (<div >{isPlay ? <img src={imgPlayed} /> : <PlayCircleFilled />}</div>);
+    const iconCurrent = (<div >{isPlay ? <img src={imgPlayed} alt="am thanh"/> : <PlayCircleFilled />}</div>);
 
 
     const handleClick = (music) => {
