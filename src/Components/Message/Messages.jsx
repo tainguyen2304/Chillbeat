@@ -40,7 +40,7 @@ export default function Message({ text, displayName, createdAt, photoURL, id }) 
   const { user: { uid } } = useContext(AuthContext)
   return (
     id === uid
-      ? <div className='d-flex justify-content-end mr-2 mb-3 align-items-center'>
+      ? <div className='d-flex justify-content-end me-2 mb-3 align-items-center'>
         <Typography.Text style={{ fontSize: 11, color: '#a7a7a7', marginRight: '10px' }}>
           {formatDate(createdAt?.seconds)}
         </Typography.Text>

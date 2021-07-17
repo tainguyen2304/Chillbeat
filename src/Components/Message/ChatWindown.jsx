@@ -74,18 +74,19 @@ const MessageListStyled = styled.div`
   overflow-y: auto;
 
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   &::-webkit-scrollbar-thumb {
     heigth: 1rem;
-    background-color: #ddd;
+    background-color: #eee;
     border-radius: 6px;
     cursor: pointer;
+    
   }
     
   &::-webkit-scrollbar-thumb:hover{
-    background-color: rgb(94, 147, 245);
+    background-color: #ddd;
   }
 `;
 
