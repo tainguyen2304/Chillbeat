@@ -10,6 +10,7 @@ export const addDocument = (collection, data) => {
 };
 
 // tao keywords cho displayName, su dung cho search
+// ---------------------------------------------------
 export const generateKeywords = (displayName) => {
   // liet ke tat cac hoan vi. vd: name = ["David", "Van", "Teo"]
   // => ["David", "Van", "Teo"], ["David", "Teo", "Van"], ["Teo", "David", "Van"],...
