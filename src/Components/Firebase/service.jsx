@@ -9,6 +9,12 @@ export const addDocument = (collection, data) => {
   });
 };
 
+export const deleteDocument = (collection, id) => {
+  const query = db.collection(collection);
+
+  query.doc(id).delete();
+}
+
 // tao keywords cho displayName, su dung cho search
 // ---------------------------------------------------
 export const generateKeywords = (displayName) => {

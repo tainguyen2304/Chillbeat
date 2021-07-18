@@ -1,8 +1,9 @@
-import { Avatar, Typography, Button } from 'antd';
+import { Avatar, Typography, Button, Menu, Dropdown } from 'antd';
 import styled from 'styled-components';
 import { formatRelative } from 'date-fns/esm';
 import { useContext } from 'react';
 import { AuthContext } from 'Context/AuthProvider';
+import { deleteDocument } from 'Components/Firebase/service';
 
 const WrapperStyled = styled.div`
   margin-bottom: 10px;
@@ -36,17 +37,37 @@ function formatDate(seconds) {
   return formattedDate;
 }
 
-export default function Message({ text, displayName, createdAt, photoURL, id }) {
-  const { user: { uid } } = useContext(AuthContext)
+
+const handleClick = (idMessage) => {
+  deleteDocument('messages', idMessage)
+}
+
+
+export default function Message({ text, displayName, createdAt, photoURL, idUser, idMessage }) {
+  const { user: { uid } } = useContext(AuthContext);
+
+  const menu = (
+    <Menu style={{ backgroundColor: 'transparent' }}>
+      <Menu.Item key="0">
+        <Button type="text" onClick={() => handleClick(idMessage)}>Xóa</Button>
+      </Menu.Item>
+      <Menu.Item key="1">
+        <Button type="text" >Chuyển tiếp</Button>
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
-    id === uid
+    idUser === uid
       ? <div className='d-flex justify-content-end me-2 mb-3 align-items-center'>
         <Typography.Text style={{ fontSize: 11, color: '#a7a7a7', marginRight: '10px' }}>
           {formatDate(createdAt?.seconds)}
         </Typography.Text>
-        <Button type="primary" shape="round">
-          <Typography.Text className='content text-light'>{text}</Typography.Text>
-        </Button>
+        <Dropdown overlay={menu} trigger={['click']}>
+          <Button type="primary" shape="round">
+            {text}
+          </Button>
+        </Dropdown>
       </div>
       : <WrapperStyled>
         <div>
@@ -59,7 +80,11 @@ export default function Message({ text, displayName, createdAt, photoURL, id }) 
           </Typography.Text>
         </div>
         <div>
-          <Typography.Text className='content'>{text}</Typography.Text>
+          <Dropdown overlay={menu} trigger={['click']}>
+            <Button shape="round">
+              {text}
+            </Button>
+          </Dropdown>
         </div>
       </WrapperStyled>
   );
