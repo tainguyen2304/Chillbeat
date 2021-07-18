@@ -47,7 +47,7 @@ export default function Message({ text, displayName, createdAt, photoURL, idUser
   const { user: { uid } } = useContext(AuthContext);
 
   const menu = (
-    <Menu style={{ backgroundColor: 'transparent' }}>
+    <Menu>
       <Menu.Item key="0">
         <Button type="text" onClick={() => handleClick(idMessage)}>Xóa</Button>
       </Menu.Item>
