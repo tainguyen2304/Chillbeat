@@ -61,7 +61,7 @@ function DebounceSelect({
 async function fetchUserList(search, curMembers) {
   return db
     .collection('users')
-    .where('keywords', 'array-contains', search)//?.toLowerCase()
+    .where('keywords', 'array-contains', search?.toLowerCase())
     // .orderBy('displayName')
     .limit(20)
     .get()

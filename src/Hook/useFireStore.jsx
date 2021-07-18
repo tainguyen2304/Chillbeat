@@ -21,15 +21,14 @@ const useFirestore = (collection, condition) => {
         condition.compareValue
       );
     }
-
+    // real-time listening 
     const unsubscribe = collectionRef.onSnapshot((snapshot) => {
       const documents = snapshot.docs
         .map((doc) => ({
           ...doc.data(),
           id: doc.id,
         }))
-        .sort((a, b) => a.createdAt - b.createdAt);
-
+        .sort((a, b) => a.createdAt - b.createdAt)
       setDocuments(documents);
     });
 

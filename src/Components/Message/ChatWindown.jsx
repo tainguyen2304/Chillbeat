@@ -184,7 +184,8 @@ function ChatWindown(props) {
                   photoURL={mes.photoURL}
                   displayName={mes.displayName}
                   createdAt={mes.createdAt}
-                  id={mes.uid}
+                  idUser={mes.uid}
+                  idMessage={mes.id}
                 />
               ))}
             </MessageListStyled>
