@@ -39,7 +39,7 @@ function Earning(props) {
         deleteDocument('MusicFavorite', id)
     }
     let exist = new RegExp(value.trim(), 'i');
-    let listMusic = dataMusic.filter(music => exist.test(music.nameSong));
+    let listMusic = dataMusic.filter(music => exist.test(music.nameSong) || exist.test(music.nameSingle));
 
     return (
         <div className='opacity' style={{ height: '100vh', overflowY: 'auto' }}>
@@ -66,7 +66,7 @@ function Earning(props) {
             <div className="Song-search text-secondary py-4">
                 <div className="rounded-pill w-50">
                     <span>{search}</span>
-                    <input value={value} onChange={onChange} type="text" className='text-secondary bg-light w-75' placeholder="Find to song" />
+                    <input value={value} onChange={onChange} type="text" className='text-secondary bg-light w-75' placeholder="Search song or artist" />
                 </div>
             </div>
             <div className="pt-5">

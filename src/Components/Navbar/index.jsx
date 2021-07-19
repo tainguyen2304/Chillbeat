@@ -33,7 +33,7 @@ function Navbar_tab({ url }) {
         <div className="Navbar  bg-dark d-flex flex-column justify-content-between">
             <div>
                 <div>
-                    <img src={logo_img} alt="" className="w-100 p-4" />
+                    <img src={logo_img} alt="" className="w-100 p-4 rounded-circle" />
                 </div>
                 <ul className="nav flex-column nav-pills Navbar__list">
                     {navTabs.map((tap, idx) => (
