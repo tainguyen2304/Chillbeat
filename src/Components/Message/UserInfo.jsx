@@ -14,11 +14,11 @@ function UserInfo(props) {
   const { clearState } = useContext(AppContext);
 
   return (
-    <div >
+    <div className='d-flex align-items-center'>
       <Avatar src={photoURL}>
         {photoURL ? '' : displayName?.charAt(0)?.toUpperCase()}
       </Avatar>
-      <Typography.Text className='username'>{displayName}</Typography.Text>
+      <Typography.Text className='username ms-2'>{displayName}</Typography.Text>
       <button className='btn btn-outline-dark ms-3'
         ghost='true'
         onClick={() => {

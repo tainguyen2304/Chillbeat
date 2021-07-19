@@ -11,7 +11,6 @@ export const addDocument = (collection, data) => {
 
 export const deleteDocument = (collection, id) => {
   const query = db.collection(collection);
-
   query.doc(id).delete();
 }
 
