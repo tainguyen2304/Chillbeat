@@ -49,13 +49,13 @@ export { imgPlayed };
 export const logo_img = logo;
 // data NAV-TABS
 export const search = <SearchOutlined />
-export const HOME_PAGE = '/Home';
-export const DASH_BOARD = '/Dashboard'
-export const EARNINGS = '/Earning';
-export const MESSAGE = '/Message';
-export const SIGNIN = '/SignIn';
-export const CHILL_BEAT = '/ChillBeat';
-export const MUSIC = '/Listen_to_Music'
+export const HOME_PAGE = '/home';
+export const DASH_BOARD = '/dashboard'
+export const EARNINGS = '/earning';
+export const MESSAGE = '/message';
+export const SIGNIN = '/sign_in';
+export const CHILL_BEAT = '/chill_beat';
+export const MUSIC = '/listen_to_music'
 export const navTabs = [
     {
         url: HOME_PAGE,
