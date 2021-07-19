@@ -39,6 +39,7 @@ export default function AppProvider({ children }) {
   }, [selectedRoom.members]);
 
   const members = useFirestore('users', usersCondition);
+  
   const clearState = () => {
     setSelectedRoomId('');
     setIsAddRoomVisible(false);

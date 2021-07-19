@@ -55,17 +55,17 @@ function Earning(props) {
                 </Col>
                 <Col span={16}>
                     <Title level={1} className='text-light'>{t("Danh Sách Nhạc Yêu Thích")}</Title>
-                    <small>
+                    <small className="d-flex align-items-center">
                         <Avatar size='small' src={photoURL}>
                             {photoURL ? '' : displayName?.charAt(0)?.toUpperCase()}
                         </Avatar>
-                        <Text className='username text-light'>{displayName}</Text>
+                        <Text className='username text-light ms-2'>{displayName}</Text>
                     </small>
                 </Col>
             </Row>
             <div className="Song-search text-secondary py-4">
-                <div className="rounded-pill w-50">
-                    <span>{search}</span>
+                <div className="rounded-pill w-50 d-flex align-items-center">
+                    <span style={{paddingBottom:'0.4rem'}}>{search}</span>
                     <input value={value} onChange={onChange} type="text" className='text-secondary bg-light w-75' placeholder="Search song or artist" />
                 </div>
             </div>

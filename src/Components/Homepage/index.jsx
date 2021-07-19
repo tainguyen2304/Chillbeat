@@ -9,9 +9,8 @@ function Homepage() {
     return (
         <div className="Home-page opacity">
             <div className="Home-page__search text-secondary py-4">
-                <div className="rounded-pill w-50 ">
-                    <span>{search}</span>
-                    {/* tim kiem can du lieu tu store */}
+                <div className="rounded-pill w-50 d-flex align-items-center">
+                    <span style={{paddingBottom:'0.4rem'}}>{search}</span>
                     <input type="text" className='text-secondary bg-light w-75' placeholder="Search to find" />
                 </div>
             </div>
