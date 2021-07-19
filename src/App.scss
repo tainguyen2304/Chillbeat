@@ -81,3 +81,25 @@ html {
 
     }
 }
+
+.message-box {
+    max-width: 75%;
+    padding: .5rem;
+    font-size: 0.9rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+.message-box:hover {
+    opacity: .8;
+}
+.input-box {
+    height: 1rem;
+    font-size: 0.8rem;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+.dropdwon-message {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}

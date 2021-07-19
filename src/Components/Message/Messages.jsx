@@ -1,4 +1,4 @@
-import { Avatar, Typography, Button, Menu, Dropdown } from 'antd';
+import { Avatar, Typography, Menu, Dropdown, Button } from 'antd';
 import styled from 'styled-components';
 import { formatRelative } from 'date-fns/esm';
 import { useContext } from 'react';
@@ -6,11 +6,11 @@ import { AuthContext } from 'Context/AuthProvider';
 import { deleteDocument } from 'Components/Firebase/service';
 
 const WrapperStyled = styled.div`
-  margin-bottom: 10px;
-
+  margin-bottom: 16px;
   .author {
     margin-left: 5px;
     font-weight: bold;
+    font-size: 1rem;
   }
 
   .date {
@@ -47,44 +47,38 @@ export default function Message({ text, displayName, createdAt, photoURL, idUser
   const { user: { uid } } = useContext(AuthContext);
 
   const menu = (
-    <Menu>
-      <Menu.Item key="0">
-        <Button type="text" onClick={() => handleClick(idMessage)}>Xóa</Button>
-      </Menu.Item>
-      <Menu.Item key="1">
-        <Button type="text" >Chuyển tiếp</Button>
+    <Menu className='dropdwon-message'>
+      <Menu.Item key="0" className='d-flex dropdwon-message' >
+        <Button size='small' shape="round" danger type='primary ' onClick={() => handleClick(idMessage)}>Xóa</Button>
+        <Button size='small' shape="round" className='ms-2' type='primary' >Chuyển tiếp</Button>
       </Menu.Item>
     </Menu>
   );
 
   return (
     idUser === uid
-      ? <div className='d-flex justify-content-end me-2 mb-3 align-items-center'>
+      ? <div className='d-flex justify-content-end me-2 mb-2 align-items-center'>
         <Typography.Text style={{ fontSize: 11, color: '#a7a7a7', marginRight: '10px' }}>
           {formatDate(createdAt?.seconds)}
         </Typography.Text>
         <Dropdown overlay={menu} trigger={['click']}>
-          <Button type="primary" shape="round">
-            {text}
-          </Button>
+          <span className='bg-primary  text-light message-box'>{text}</span>
         </Dropdown>
       </div>
-      : <WrapperStyled>
-        <div>
+      : <WrapperStyled >
+        <div className='mb-2'>
           <Avatar size='small' src={photoURL}>
             {photoURL ? '' : displayName?.charAt(0)?.toUpperCase()}
           </Avatar>
           <Typography.Text className='author'>{displayName}</Typography.Text>
-          <Typography.Text className='date'>
+        </div>
+        <div className='d-flex justify-content-start ms-2 mb-2 align-items-center'>
+          <Dropdown overlay={menu} trigger={['click']}>
+            <span className='message-box' style={{ backgroundColor: '#ddd' }}>{text}</span>
+          </Dropdown>
+          <Typography.Text style={{ fontSize: 11, color: '#a7a7a7', marginLeft: '10px' }}>
             {formatDate(createdAt?.seconds)}
           </Typography.Text>
-        </div>
-        <div>
-          <Dropdown overlay={menu} trigger={['click']}>
-            <Button shape="round">
-              {text}
-            </Button>
-          </Dropdown>
         </div>
       </WrapperStyled>
   );

@@ -68,11 +68,10 @@ const FormStyled = styled(Form)`
     margin-bottom: 0;
   }
 `;
-
 const MessageListStyled = styled.div`
   max-height: 100%;
   overflow-y: auto;
-
+  word-wrap: break-word ;
   &::-webkit-scrollbar {
     width: 6px;
   }
@@ -192,7 +191,9 @@ function ChatWindown(props) {
 
             <FormStyled form={form}>
               <Form.Item name='message'>
-                <Input
+                <Input.TextArea
+                  className='input-box'
+                  rows={1}
                   ref={inputRef}
                   onChange={handleInputChange}
                   onPressEnter={handleOnSubmit}
