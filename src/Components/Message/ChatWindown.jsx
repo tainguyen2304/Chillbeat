@@ -68,6 +68,7 @@ const FormStyled = styled(Form)`
     margin-bottom: 0;
   }
 `;
+
 const MessageListStyled = styled.div`
   max-height: 100%;
   overflow-y: auto;
@@ -173,8 +174,8 @@ function ChatWindown(props) {
               </Avatar.Group>
             </ButtonGroupStyled>
           </HeaderStyled>
-          <ContentStyled>
 
+          <ContentStyled>
             <MessageListStyled ref={messageListRef}>
               {messages.map((mes) => (
                 <Message

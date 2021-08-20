@@ -1,7 +1,7 @@
 import { PauseCircleFilled, PlayCircleFilled } from '@ant-design/icons';
 import { artistImg, dataMusicDemo, MUSIC } from 'constans';
 import { AppContext } from 'Context/Approvider';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import OnLiked from './OnLiked';
@@ -11,22 +11,16 @@ function Artlist() {
     const { pathname } = useLocation()
     const { isPlay, setPlay, audioIndex, setAudioIndex, audioRef } = useContext(AppContext);
 
-    // useEffect(() => {
-    //     if (isPlay) {
-    //         audioRef.current.play()
-    //     }
-    //     else {
-    //         audioRef.current.pause()
-    //     }
-    // }, [audioIndex]);
-
-    const handlePausePlayClick = () => {
+    useEffect(() => {
         if (isPlay) {
-            audioRef.current.pause()
-        }
-        else {
             audioRef.current.play()
         }
+        else {
+            audioRef.current.pause()
+        }
+    }, [isPlay, audioRef]);
+
+    const handlePausePlayClick = () => {
         setPlay(!isPlay);
     };
 
@@ -43,7 +37,7 @@ function Artlist() {
             <h5 className="fw-bold">{t("Artist of the week")}</h5>
             <div className="row">
                 <div className="col-4">
-                    <img src={artistImg} alt="Monica Lee" className="rounded w-100 h-100" />
+                    <img src={artistImg} alt="Monica Lee" className="rounded artist_img w-100" />
                 </div>
                 <div className="col-8 py-2">
                     <small>{t("Album")}</small>

@@ -12,9 +12,7 @@ export default function AppProvider({ children }) {
   const [isPlay, setPlay] = useState(false);
   const audioRef = useRef();
   const [songAndSingle, setSongAndSingle] = useState({})
-  const {
-    user: { uid },
-  } = useContext(AuthContext);
+  const { user: { uid } } = useContext(AuthContext);
 
   const roomsCondition = useMemo(() => {
     return {
@@ -39,7 +37,18 @@ export default function AppProvider({ children }) {
   }, [selectedRoom.members]);
 
   const members = useFirestore('users', usersCondition);
-  
+
+  const songCondition = useMemo(() => {
+    return {
+      fieldName: 'userId',
+      operator: '==',
+      compareValue: uid
+    }
+  }, [uid])
+
+  const listMusicFavorite = useFirestore('MusicFavorite', songCondition);
+
+
   const clearState = () => {
     setSelectedRoomId('');
     setIsAddRoomVisible(false);
@@ -65,7 +74,8 @@ export default function AppProvider({ children }) {
         setPlay,
         audioRef,
         songAndSingle,
-        setSongAndSingle
+        setSongAndSingle,
+        listMusicFavorite
       }}
     >
       {children}

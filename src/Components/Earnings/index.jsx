@@ -1,31 +1,38 @@
-import { HeartFilled, PlayCircleFilled, CloseCircleFilled } from '@ant-design/icons';
-import { Avatar, Col, Row, Typography, Button } from 'antd';
+import { CloseCircleFilled, HeartFilled, PlayCircleFilled } from '@ant-design/icons';
+import { Avatar, Button, Col, Row, Typography } from 'antd';
 import { deleteDocument } from 'Components/Firebase/service';
 import OnLiked from 'Components/Homepage/components/OnLiked';
 import { imgPlayed, search } from 'constans';
 import { AppContext } from 'Context/Approvider';
 import { AuthContext } from 'Context/AuthProvider';
-import useFirestore from 'Hook/useFireStore';
-import { useContext, useState } from 'react';
+import { useContext, useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import './Earnings.scss';
+
 
 const { Title, Text } = Typography;
 
 function Earning(props) {
-    const { isPlay, setAudioIndex, setPlay, setSongAndSingle } = useContext(AppContext);
+    const { isPlay, setAudioIndex, setPlay, setSongAndSingle, listMusicFavorite } = useContext(AppContext);
     const { t } = useTranslation();
     const [value, setValue] = useState('');
+    const [listSong, setListSong] = useState([]);
     const [id, setId] = useState('')
     const { user: { photoURL, displayName } } = useContext(AuthContext);
-    const dataMusic = useFirestore('MusicFavorite')
     const unActive = ' Music-item p-2';
+    const inputRef = useRef(null)
     const Active = ' Music-item p-2 activeMusic ';
     const iconCurrent = (<div >{isPlay ? <img src={imgPlayed} alt="am thanh" /> : <PlayCircleFilled />}</div>);
 
 
+    useEffect(() => {
+        setListSong(listMusicFavorite)
+        setValue('')
+    }, [listMusicFavorite])
+
+
     const handleClick = (music) => {
-        const { id, nameSingle, nameSong, audio, time } = music;
+        const { id, nameSingle, nameSong, time, audio } = music;
         setId(id);
         setAudioIndex(audio);
         setSongAndSingle({ nameSong, nameSingle, time });
@@ -33,13 +40,23 @@ function Earning(props) {
     }
 
     const onChange = (e) => {
-        setValue(e.target.value);
+        let value = e.target.value;
+        setValue(value);
+
+        if (inputRef.current) {
+            clearTimeout(inputRef.current)
+        }
+
+        inputRef.current = setTimeout(() => {
+            let exist = new RegExp(value.trim(), 'i');
+            const listSongFillter = listMusicFavorite.filter(music => exist.test(music.nameSong) || exist.test(music.nameSingle));
+            setListSong(listSongFillter)
+        }, 400)
     }
+
     const RemoveDataSong = (id) => {
         deleteDocument('MusicFavorite', id)
     }
-    let exist = new RegExp(value.trim(), 'i');
-    let listMusic = dataMusic.filter(music => exist.test(music.nameSong) || exist.test(music.nameSingle));
 
     return (
         <div className='opacity' style={{ height: '100vh', overflowY: 'auto' }}>
@@ -65,13 +82,13 @@ function Earning(props) {
             </Row>
             <div className="Song-search text-secondary py-4">
                 <div className="rounded-pill w-50 d-flex align-items-center">
-                    <span style={{paddingBottom:'0.4rem'}}>{search}</span>
+                    <span style={{ paddingBottom: '0.4rem' }}>{search}</span>
                     <input value={value} onChange={onChange} type="text" className='text-secondary bg-light w-75' placeholder="Search song or artist" />
                 </div>
             </div>
             <div className="pt-5">
                 {
-                    listMusic.map((music, index) => (
+                    listSong.map((music, index) => (
                         <Row className={music.id === id ? Active : unActive} align='middle' key={music.id}>
                             <Col span={2} > {music.id === id ? iconCurrent : index + 1} </Col>
                             <Col span={2}> <OnLiked /> </Col>
@@ -82,7 +99,6 @@ function Earning(props) {
                             <Col span={2}>{music.time}</Col>
                             <Col span={2}>
                                 <Button
-                                    ghost='true'
                                     icon={<CloseCircleFilled />}
                                     type='text'
                                     onClick={() => RemoveDataSong(music.id)}

@@ -2,7 +2,7 @@ import { FastBackwardOutlined, FastForwardOutlined, PauseCircleFilled, PlayCircl
 import { Col, Row } from 'antd';
 import { dataMusic } from 'constans';
 import { AppContext } from 'Context/Approvider';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import TimeSlider from 'react-input-slider';
 
 
@@ -13,16 +13,16 @@ function ControlMusic() {
     const [duration, setDuration] = useState(0);
     const [isLoop, setLoop] = useState(false);
     const [isRandom, setRandom] = useState(false);
-    const max = dataMusic.length;
+    const max = dataMusic.length - 1;
 
-    // useEffect(() => {
-    //     if (isPlay) {
-    //         audioRef.current.play()
-    //     }
-    //     else {
-    //         audioRef.current.pause()
-    //     }
-    // }, [audioIndex]);
+    useEffect(() => {
+        if (isPlay) {
+            audioRef.current.play()
+        }
+        else {
+            audioRef.current.pause()
+        }
+    }, [audioRef, isPlay]);
 
     const handlePausePlayClick = () => {
         if (isPlay) {
@@ -88,7 +88,7 @@ function ControlMusic() {
 
     const onEnd = () => {
         if (isLoop) {
-            setAudioIndex(audioIndex);
+            audioRef.current.play()
         }
         else {
             setAudioIndex(audioIndex + 1);
@@ -160,7 +160,7 @@ function ControlMusic() {
                                         }}
                                     />
                                 </Col>
-                                <Col span={4} className="pl-1">{dataMusic[audioIndex] ? dataMusic[audioIndex].time : songAndSingle.time}</Col>
+                                <Col span={4} className="ps-1">{dataMusic[audioIndex] ? dataMusic[audioIndex].time : songAndSingle.time}</Col>
                             </Row>
                         </Col>
                     </Row>

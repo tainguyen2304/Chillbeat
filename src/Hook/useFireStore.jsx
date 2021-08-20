@@ -23,13 +23,12 @@ const useFirestore = (collection, condition) => {
     }
     // real-time listening 
     const unsubscribe = collectionRef.onSnapshot((snapshot) => {
-      const documents = snapshot.docs
-        .map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }))
-        .sort((a, b) => a.createdAt - b.createdAt)
-      setDocuments(documents);
+      const documents = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }))
+
+      setDocuments(documents.sort((a, b) => a.createdAt - b.createdAt));
     });
 
     return unsubscribe;
