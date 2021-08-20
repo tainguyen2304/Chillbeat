@@ -15,10 +15,10 @@ function Trendind(props) {
             <h5 className='fw-bold'>{t("Trendings")}</h5>
             <Carousel>
                 {imgCarousel.map((item, index) => (
-                    <Carousel.Item key={index} className='img-trending'>
+                    <Carousel.Item key={index} className='carousel-trending'>
                         <Link to={`${pathname}/event_${index}`}>
                             <img
-                                className="d-block w-100 rounded "
+                                className="d-block w-100 img-trending "
                                 src={item}
                                 alt='...'
                             />

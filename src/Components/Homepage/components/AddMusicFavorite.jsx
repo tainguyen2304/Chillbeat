@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import { FileAddOutlined, FileAddFilled } from '@ant-design/icons'
 import { addDocument } from 'Components/Firebase/service';
-import useFirestore from 'Hook/useFireStore';
+import { useContext } from 'react';
+import { AuthContext } from 'Context/AuthProvider';
+import { AppContext } from 'Context/Approvider';
 
 AddMusicFavorite.propTypes = {
     nameSingle: PropTypes.string.isRequired,
@@ -10,8 +12,9 @@ AddMusicFavorite.propTypes = {
 };
 
 function AddMusicFavorite({ nameSong, nameSingle, time, audio }) {
-    const listMusic = useFirestore('MusicFavorite');
-    const exist = listMusic.find(music => music.nameSong === nameSong);
+    const { user: { uid } } = useContext(AuthContext)
+    const { listMusicFavorite } = useContext(AppContext)
+    const exist = listMusicFavorite.find(music => music.nameSong === nameSong);
 
     const handleClick = () => {
         if (!exist) {
@@ -19,7 +22,8 @@ function AddMusicFavorite({ nameSong, nameSingle, time, audio }) {
                 nameSong,
                 nameSingle,
                 time,
-                audio
+                audio,
+                userId: uid
             })
         }
     }

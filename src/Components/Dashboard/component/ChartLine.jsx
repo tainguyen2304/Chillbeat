@@ -1,3 +1,4 @@
+import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { useTranslation } from "react-i18next";
 
@@ -85,4 +86,4 @@ function ChartLine(props) {
     );
 }
 
-export default ChartLine;
+export default React.memo(ChartLine);

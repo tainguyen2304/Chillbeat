@@ -14,7 +14,10 @@
     }
     }
     .Trendind {
-        .img-trending:hover {
+        .img-trending {
+            border-radius: 6px;
+        }
+        .carousel-trending:hover {
             opacity: .7;
             cursor: pointer;
             transition: all .2s ease-in-out;
@@ -36,6 +39,9 @@
             .des {
                 font-size: 12px;
                 color: rgb(204, 203, 203);
+            }
+            .artist_img {
+                height:356px;
             }
 
             .list-play-music{

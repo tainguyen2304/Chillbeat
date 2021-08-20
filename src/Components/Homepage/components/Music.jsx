@@ -1,20 +1,24 @@
 import { PlayCircleFilled } from '@ant-design/icons';
 import { artistImg, dataMusic, imgPlayed } from 'constans';
 import { AppContext } from 'Context/Approvider';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import AddMusicFavorite from './AddMusicFavorite';
 import OnLiked from './OnLiked';
 
 
 function Music() {
     const { isPlay, setPlay, audioIndex, setAudioIndex, audioRef } = useContext(AppContext);
-    const handlePausePlayClick = () => {
+
+    useEffect(() => {
         if (isPlay) {
-            audioRef.current.pause()
-        }
-        else {
             audioRef.current.play()
         }
+        else {
+            audioRef.current.pause()
+        }
+    }, [isPlay, audioRef])
+
+    const handlePausePlayClick = () => {
         setPlay(!isPlay);
     };
 

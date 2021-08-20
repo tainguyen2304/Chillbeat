@@ -22,7 +22,7 @@ function Homepage() {
                     <Artlist />
                 </div>
             </div>
-            <div className="row pt-3">
+            <div className="row ">
                 <div className="col-12 col-md-6">
                     <News />
                 </div>

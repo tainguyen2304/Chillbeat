@@ -1,5 +1,6 @@
 import { Doughnut } from 'react-chartjs-2';
 import { useTranslation } from "react-i18next";
+import React from 'react'
 
 function randomData() {
   let data = []
@@ -77,4 +78,4 @@ const Stream = () => {
   )
 };
 
-export default Stream;
+export default React.memo(Stream);
