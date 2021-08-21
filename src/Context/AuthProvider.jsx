@@ -44,7 +44,7 @@ export default function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={{ user }}>
-      {isLoading ? <Spin indicator={antIcon} style={{ position: 'fixed', inset: '50%' }} /> : children}
+      {isLoading ? <Spin tip="Đang đăng nhập..." indicator={antIcon} style={{ position: 'fixed', inset: '40%' }} /> : children}
     </AuthContext.Provider>
   );
 }
