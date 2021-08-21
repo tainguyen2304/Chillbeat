@@ -59,7 +59,7 @@ function Earning(props) {
     }
 
     return (
-        <div className='opacity' style={{ height: '100vh', overflowY: 'auto' }}>
+        <div className='opacity Earning'>
             <Row style={{ borderRadius: '8px', border: '2px solid #000', backgroundColor: "#000", padding: '6rem' }}>
                 <Col span={8}>
                     <Row justify='center' align='middle'>

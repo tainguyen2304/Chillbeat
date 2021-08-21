@@ -10,13 +10,32 @@ const { Panel } = Collapse;
 
 const PanelStyled = styled(Panel)`
   &&& {
+   
     .ant-collapse-header,
     p {
       color: #000;
     }
 
     .ant-collapse-content-box {
+      max-height: 300px;
+      overflow-y: auto;
       padding: 0 40px;
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+  
+      &::-webkit-scrollbar-thumb {
+        heigth: 1rem;
+        background-color: #eee;
+        border-radius: 6px;
+        cursor: pointer;
+        
+      }
+        
+      &::-webkit-scrollbar-thumb:hover{
+        background-color: #ddd;
+        cursor: pointer;
+      }
     }
 
     .add-room {
