@@ -1,5 +1,5 @@
-import { UserAddOutlined } from '@ant-design/icons';
-import { Alert, Avatar, Button, Form, Input, Tooltip } from 'antd';
+import { UserAddOutlined} from '@ant-design/icons';
+import { Alert, Avatar, Button, Form, Input, Tooltip} from 'antd';
 import { addDocument } from 'Components/Firebase/service';
 import { AppContext } from 'Context/Approvider';
 import { AuthContext } from 'Context/AuthProvider';
@@ -8,6 +8,7 @@ import { useContext, useEffect, useRef, useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import Message from './Messages';
+
 
 const HeaderStyled = styled.div`
   display: flex;
@@ -96,10 +97,11 @@ function ChatWindown(props) {
   const [inputValue, setInputValue] = useState('');
   const [form] = Form.useForm();
   const inputRef = useRef(null);
-  const messageListRef = useRef(null);
-
+  const messageListRef = useRef();
+  // const antIcon = <LoadingOutlined style={{ fontSize: 20 }} spin />
   const { t } = useTranslation();
 
+  
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
@@ -135,11 +137,10 @@ function ChatWindown(props) {
   const messages = useFirestore('messages', condition);
 
   useEffect(() => {
-    // scroll to bottom after message changed
     if (messageListRef?.current) {
-      messageListRef.current.scrollTop = messageListRef.current.scrollHeight + 50;
+      messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
     }
-  }, [messages]);
+  },[messages,selectedRoom.id]);
 
 
   return (
@@ -178,15 +179,20 @@ function ChatWindown(props) {
           <ContentStyled>
             <MessageListStyled ref={messageListRef}>
               {messages.map((mes) => (
-                <Message
-                  key={mes.id}
-                  text={mes.text}
-                  photoURL={mes.photoURL}
-                  displayName={mes.displayName}
-                  createdAt={mes.createdAt}
-                  idUser={mes.uid}
-                  idMessage={mes.id}
-                />
+                // <Lazyload
+                //   key={mes.id}
+                //   placeholder={<Spin indicator={antIcon} style={{ position: 'fixed', inset: '40%' }} />}
+                // >
+                //   </Lazyload>
+                    <Message
+                      key={mes.id}
+                      text={mes.text}
+                      photoURL={mes.photoURL}
+                      displayName={mes.displayName}
+                      createdAt={mes.createdAt}
+                      idUser={mes.uid}
+                      idMessage={mes.id}
+                      />
               ))}
             </MessageListStyled>
 

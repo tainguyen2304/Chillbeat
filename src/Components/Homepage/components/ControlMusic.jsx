@@ -2,7 +2,7 @@ import { FastBackwardOutlined, FastForwardOutlined, PauseCircleFilled, PlayCircl
 import { Col, Row } from 'antd';
 import { dataMusic } from 'constans';
 import { AppContext } from 'Context/Approvider';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useMemo } from 'react';
 import TimeSlider from 'react-input-slider';
 
 
@@ -13,7 +13,9 @@ function ControlMusic() {
     const [duration, setDuration] = useState(0);
     const [isLoop, setLoop] = useState(false);
     const [isRandom, setRandom] = useState(false);
-    const max = dataMusic.length - 1;
+    const max = useMemo(() => {
+        return dataMusic.length - 1;
+    }, [])
 
     useEffect(() => {
         if (isPlay) {
@@ -43,7 +45,7 @@ function ControlMusic() {
         audioRef.current.currentTime = x;
         setCurrentTime(x);
 
-        if (!isPlay) {
+        if (isPlay === false) {
             setPlay(true);
         }
     };
@@ -112,18 +114,14 @@ function ControlMusic() {
                                             <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z" />
                                         </svg>
                                     </span>
-                                    <span
-
-                                        onClick={prevSong}
+                                    <span onClick={prevSong}
                                     >
                                         <FastBackwardOutlined style={{ fontSize: 18 }} />
                                     </span>
                                     <span onClick={handlePausePlayClick}>
                                         {isPlay ? <PauseCircleFilled style={{ fontSize: '36px' }} /> : <PlayCircleFilled style={{ fontSize: '36px' }} />}
                                     </span>
-                                    <span
-
-                                        onClick={nextSong}
+                                    <span onClick={nextSong}
                                     >
                                         <FastForwardOutlined style={{ fontSize: 18 }} />
                                     </span>

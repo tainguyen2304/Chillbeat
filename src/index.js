@@ -1,11 +1,14 @@
 // import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
+import {StrictMode} from 'react'
 import './i18n/index';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-    <App />,
+  <StrictMode>
+    <App />
+  </StrictMode>,
   document.getElementById('root')
 );
 

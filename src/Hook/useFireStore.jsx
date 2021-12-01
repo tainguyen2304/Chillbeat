@@ -1,13 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import { db } from 'Components/Firebase/config';
-
 
 const useFirestore = (collection, condition) => {
 
   const [documents, setDocuments] = useState([]);
 
   useEffect(() => {
-    let collectionRef = db.collection(collection);
+    let collectionRef = db.collection(collection).orderBy('createAt');
     if (condition) {
       // reset documents data
       if (!condition.compareValue || !condition.compareValue.length) {
@@ -28,7 +27,7 @@ const useFirestore = (collection, condition) => {
         id: doc.id,
       }))
 
-      setDocuments(documents.sort((a, b) => a.createdAt - b.createdAt));
+      setDocuments(documents);
     });
 
     return unsubscribe;
