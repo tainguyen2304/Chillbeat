@@ -1,11 +1,10 @@
-import { Avatar, Typography, Menu, Dropdown, Button,Spin } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
+import { Avatar, Typography, Menu, Dropdown, Button} from 'antd';
+// import { LoadingOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import { formatRelative } from 'date-fns/esm';
 import { useContext } from 'react';
 import { AuthContext } from 'Context/AuthProvider';
 import { deleteDocument } from 'Components/Firebase/service';
-import LazyLoad from 'react-lazyload';
 
 const WrapperStyled = styled.div`
   margin-bottom: 16px;
@@ -47,7 +46,7 @@ const handleClick = (idMessage) => {
 
 export default function Message({ text, displayName, createdAt, photoURL, idUser, idMessage }) {
   const { user: { uid } } = useContext(AuthContext);
-  const antIcon = <LoadingOutlined style={{ fontSize: 5 }} spin />
+  // const antIcon = <LoadingOutlined style={{ fontSize: 5 }} spin />
 
   const menu = (
     <Menu className='dropdwon-message'>
