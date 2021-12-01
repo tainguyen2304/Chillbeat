@@ -76,9 +76,11 @@ function RoomList(props) {
   const { rooms, setSelectedRoomId, setIsAddRoomVisible } = useContext(AppContext)
   const { t } = useTranslation();
   const [idActived, setIdActive] = useState();
+
   const handleAddRoom = () => {
     setIsAddRoomVisible(true)
   };
+  
   const handleSelectRoom = (id) => {
     setSelectedRoomId(id);
     setIdActive(id);
