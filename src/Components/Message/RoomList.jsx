@@ -46,12 +46,12 @@ const PanelStyled = styled(Panel)`
     }
     .add-room:hover {
       color:#fff;
-      background:green;
+      background:#f2aad9;
       transition: all .2s linear;
     }
     .active {
-      background-color:blue;
-      color:#fff;
+      background-color:black;
+      color:#fff !important;
     }
   }
 `;
@@ -61,13 +61,15 @@ const LinkStyled = styled(Typography.Link)`
   border-radius:4px;
   background-color:#eee;
   margin-bottom: 5px;
-  color: #333;
+  color: #000 !important;
   padding:.5rem;
   text-align:center;
+  font-size: 16px;
+  font-weight: bold;
 
   &:hover {
-    background-color:blue;
-    color:#fff;
+    background-color:black;
+    color:#fff !important;
   }
 `;
 

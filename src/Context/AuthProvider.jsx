@@ -11,11 +11,10 @@ export default function AuthProvider({ children }) {
   const [user, setUser] = useState({});
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(true);
-  const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin />
-  console.log('re-render')
+  const antIcon = <LoadingOutlined style={{ fontSize: 50, color:"black" }} spin />
   useEffect(() => {
     const unsubscibed = auth.onAuthStateChanged((user) => {// khi đăng nhập thành công hoặc khi đăng xuất
-      console.log(user) 
+   
       if (user) {                                           // (trạng thái account thay đổi) sẽ chạy hàm này.
         const { displayName, email, uid, photoURL } = user;
         setUser({
@@ -46,7 +45,7 @@ export default function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={{ user }}>
-      {isLoading ? <Spin tip="Đang đăng nhập..." indicator={antIcon} style={{ position: 'fixed', inset: '40%' }} /> : children}
+      {isLoading ? <Spin tip="Đang đăng nhập..." indicator={antIcon} style={{ position: 'fixed', inset: '40%',color:'black' }} /> : children}
     </AuthContext.Provider>
   );
 }

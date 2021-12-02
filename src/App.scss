@@ -84,9 +84,9 @@ html {
 
 .message-box {
     max-width: 75%;
-    padding: .5rem;
+    padding: 0.4rem;
     font-size: 0.9rem;
-    border-radius: 1rem;
+    border-radius: 4px;
     cursor: pointer;
 }
 .message-box:hover {
@@ -102,4 +102,27 @@ html {
 .dropdwon-message {
     background-color: transparent !important;
     box-shadow: none !important;
+}
+.addRoom_buttonOke {
+    .ant-modal-footer {
+        button:nth-child(1) {
+            background-color: red !important;
+            color: white !important;  
+            border: none !important;
+            font-weight: bold !important;
+            &:hover {
+                opacity:.7 !important;
+                background: rgb(247, 37, 37) !important;
+            }
+    }
+    .ant-btn-primary {
+        background:pink !important;
+        border: pink !important;
+        font-weight: bold !important;
+        &:hover {
+            opacity:.7 !important;
+            background: rgb(241, 93, 118) !important;
+        }
+    }
+}
 }

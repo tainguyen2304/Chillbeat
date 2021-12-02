@@ -1,13 +1,13 @@
 import { Avatar, Typography, Menu, Dropdown, Button} from 'antd';
 // import { LoadingOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
-import { formatRelative } from 'date-fns/esm';
+// import { formatRelative } from 'date-fns/esm';
 import { useContext } from 'react';
 import { AuthContext } from 'Context/AuthProvider';
 import { deleteDocument } from 'Components/Firebase/service';
 
 const WrapperStyled = styled.div`
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   .author {
     margin-left: 5px;
     font-weight: bold;
@@ -25,18 +25,18 @@ const WrapperStyled = styled.div`
   }
 `;
 
-function formatDate(seconds) {
-  let formattedDate = '';
+// function formatDate(seconds) {
+//   let formattedDate = '';
 
-  if (seconds) {
-    formattedDate = formatRelative(new Date(seconds * 1000), new Date());
+//   if (seconds) {
+//     formattedDate = formatRelative(new Date(seconds * 1000), new Date());
 
-    formattedDate =
-      formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
-  }
+//     formattedDate =
+//       formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+//   }
 
-  return formattedDate;
-}
+//   return formattedDate;
+// }
 
 
 const handleClick = (idMessage) => {
@@ -44,7 +44,7 @@ const handleClick = (idMessage) => {
 }
 
 
-export default function Message({ text, displayName, createdAt, photoURL, idUser, idMessage }) {
+export default function Message({ text, displayName, photoURL, idUser, idMessage }) {
   const { user: { uid } } = useContext(AuthContext);
   // const antIcon = <LoadingOutlined style={{ fontSize: 5 }} spin />
 
@@ -64,27 +64,27 @@ export default function Message({ text, displayName, createdAt, photoURL, idUser
       //         }
       // </LazyLoad>
             idUser === uid
-                ? <div className='d-flex justify-content-end me-2 mb-2 align-items-center'>
+                ? <div className='d-flex justify-content-end me-2 mb-1 align-items-center'>
                       <Typography.Text style={{ fontSize: 11, color: '#a7a7a7', marginRight: '10px' }}>
-                        {formatDate(createdAt?.seconds)}
+                        {/* {formatDate(createdAt?.seconds)} */}
                       </Typography.Text>
                       <Dropdown overlay={menu} trigger={['click']}>
-                        <span className='bg-primary  text-light message-box'>{text}</span>
+                        <span className='text-light message-box' style={{backgroundColor:'black'}}>{text}</span>
                       </Dropdown>
                 </div>
                 : <WrapperStyled >
-                    <div className='mb-2'>
+                    <div className='mb-1'>
                       <Avatar size='small' src={photoURL}>
                         {photoURL ? '' : displayName?.charAt(0)?.toUpperCase()}
                       </Avatar>
                       <Typography.Text className='author'>{displayName}</Typography.Text>
                     </div>
-                    <div className='d-flex justify-content-start ms-2 mb-2 align-items-center'>
+                    <div className='d-flex justify-content-start ms-2 mb-1 align-items-center'>
                       <Dropdown overlay={menu} trigger={['click']}>
                         <span className='message-box' style={{ backgroundColor: '#ddd' }}>{text}</span>
                       </Dropdown>
                       <Typography.Text style={{ fontSize: 11, color: '#a7a7a7', marginLeft: '10px' }}>
-                        {formatDate(createdAt?.seconds)}
+                        {/* {formatDate(createdAt?.seconds)} */}
                       </Typography.Text>
                     </div>
                 </WrapperStyled>

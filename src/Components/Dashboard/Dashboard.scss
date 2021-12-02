@@ -5,7 +5,13 @@
         }
       button {
           margin-left: .5rem;
-          
+      }
+      .addDashboard {
+          background: hotpink;
+          color: #fff;
+          &:hover{
+              opacity: .7;
+          }
       }
     }
     &__body {
