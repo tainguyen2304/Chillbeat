@@ -12,27 +12,29 @@ import {
 } from 'react-router-dom';
 import './App.scss';
 
+const ChillBeat = lazy(() => import('Components'))
+
 function App() {
   return (
-    <Router className="App">
-      <AuthProvider>
-        <Approvider>
-          <Switch>
-            <Route component={Login} exact path={SIGNIN} />
-            <Route component={ChillBeat} path={CHILL_BEAT} />
-            <Route path='*'>
-              <div className="d-flex w-100 h-100">
-                <div className="m-auto">
-                  <h1>
-                    404! Not Found
-                  </h1>
+      <Router className="App">
+        <AuthProvider>
+          <Approvider>
+            <Switch>
+              <Route component={Login} exact path={SIGNIN} />
+              <Route component={ChillBeat} path={CHILL_BEAT} />
+              <Route path='*'>
+                <div className="d-flex w-100 h-100">
+                  <div className="m-auto">
+                    <h1>
+                      404! Not Found
+                    </h1>
+                  </div>
                 </div>
-              </div>
-            </Route>
-          </Switch>
-        </Approvider>
-      </AuthProvider>
-    </Router>
+              </Route>
+            </Switch>
+          </Approvider>
+        </AuthProvider>
+      </Router>
   );
 }
 

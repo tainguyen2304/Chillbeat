@@ -119,7 +119,7 @@ function ControlMusic() {
                                         <FastBackwardOutlined style={{ fontSize: 18 }} />
                                     </span>
                                     <span onClick={handlePausePlayClick}>
-                                        {isPlay ? <PauseCircleFilled style={{ fontSize: '36px' }} /> : <PlayCircleFilled style={{ fontSize: '36px' }} />}
+                                        {isPlay ? <PauseCircleFilled style={{ fontSize: '36px', color: 'hotpink' }} /> : <PlayCircleFilled style={{ fontSize: '36px',color: 'hotpink' }} />}
                                     </span>
                                     <span onClick={nextSong}
                                     >

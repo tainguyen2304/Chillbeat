@@ -31,7 +31,7 @@ function Artlist() {
 
     const unActive = 'row pb-1 align-items-center  Music-item';
     const Active = 'row pb-1 align-items-center activeMusic  Music-item';
-    const iconCurrent = (<div onClick={handlePausePlayClick}>{isPlay ? <PauseCircleFilled /> : <PlayCircleFilled />}</div>)
+    const iconCurrent = (<div onClick={handlePausePlayClick}>{isPlay ? <PauseCircleFilled style={{color:'#f6a2da'}} /> : <PlayCircleFilled style={{color:'hotpink'}}/>}</div>)
     return (
         <div className='Artlist h-100'>
             <h5 className="fw-bold">{t("Artist of the week")}</h5>
@@ -70,7 +70,7 @@ function Artlist() {
                         }
                     </div>
                     <p className="text-center text-dark m-0 pt-1">
-                        <Link to={`${pathname}${MUSIC}`} >{t("Show more")}</Link>
+                        <Link to={`${pathname}${MUSIC}`} className="showMore" >{t("Show more")}</Link>
                     </p>
 
                 </div>

@@ -80,14 +80,14 @@ const MessageListStyled = styled.div`
 
   &::-webkit-scrollbar-thumb {
     heigth: 1rem;
-    background-color: #eee;
+    background-color: pink;
     border-radius: 6px;
-    cursor: pointer;
     
   }
     
   &::-webkit-scrollbar-thumb:hover{
-    background-color: #ddd;
+    background-color: #fd609c;
+    cursor: pointer !important;
   }
 `;
 
@@ -189,7 +189,7 @@ function ChatWindown(props) {
                       text={mes.text}
                       photoURL={mes.photoURL}
                       displayName={mes.displayName}
-                      createdAt={mes.createdAt}
+                      // createdAt={mes.createAt}
                       idUser={mes.uid}
                       idMessage={mes.id}
                       />
@@ -209,7 +209,7 @@ function ChatWindown(props) {
                   autoComplete='off'
                 />
               </Form.Item>
-              <Button type='primary' onClick={handleOnSubmit}>
+              <Button style={{backgroundColor:'pink', color:'white', fontWeight:"bold", border:'none'}} onClick={handleOnSubmit}>
                 {t("Gửi")}
               </Button>
             </FormStyled>
@@ -218,8 +218,7 @@ function ChatWindown(props) {
       ) : (
         <Alert
           message='Hãy chọn phòng'
-          type='info'
-          showIcon
+          type='error'
           style={{ margin: 5 }}
           closable
         />

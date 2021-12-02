@@ -7,7 +7,7 @@ import { AppContext } from 'Context/Approvider';
 import { AuthContext } from 'Context/AuthProvider';
 import { useContext, useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import './Earnings.scss';
+import './FavoriteMusic.scss';
 
 
 const { Title, Text } = Typography;
@@ -22,7 +22,7 @@ function Earning(props) {
     const unActive = ' Music-item p-2';
     const inputRef = useRef(null)
     const Active = ' Music-item p-2 activeMusic ';
-    const iconCurrent = (<div >{isPlay ? <img src={imgPlayed} alt="am thanh" /> : <PlayCircleFilled />}</div>);
+    const iconCurrent = (<div >{isPlay ? <img src={imgPlayed} alt="am thanh" /> : <PlayCircleFilled style={{color:"hotpink"}} />}</div>);
 
 
     useEffect(() => {
@@ -65,7 +65,7 @@ function Earning(props) {
                     <Row justify='center' align='middle'>
                         <Col >
                             <div>
-                                <HeartFilled style={{ fontSize: '8rem', color: 'white' }} />
+                                <HeartFilled style={{ fontSize: '8rem', color: 'hotpink' }} />
                             </div>
                         </Col>
                     </Row>

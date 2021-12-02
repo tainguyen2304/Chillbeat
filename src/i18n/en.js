@@ -15,7 +15,7 @@ export const EN = {
         "December": "December",
         "Sign in gg": "Sign in with Google",
         "Sign in fb": "Sign in with Facebook",
-        "new dashboard": "new dashboard",
+        "new dashboard": "New dashboard",
         "My new amazing album": "My new amazing album",
         "Dashboard": "Dashboard",
         "Download as CSV": "Download as CSV",

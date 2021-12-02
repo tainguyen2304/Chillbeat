@@ -30,7 +30,7 @@ function Music() {
 
     const unActive = 'row align-items-center py-2 Music-item ';
     const Active = 'row activeMusic align-items-center py-2 Music-item';
-    const iconCurrent = (<div onClick={handlePausePlayClick}>{isPlay ? <img src={imgPlayed} alt="am thanh" /> : <PlayCircleFilled />}</div>)
+    const iconCurrent = (<div onClick={handlePausePlayClick}>{isPlay ? <img src={imgPlayed} alt="am thanh" /> : <PlayCircleFilled style={{color:'hotpink'}} />}</div>)
 
     return (
         <div className='Music opacity'>

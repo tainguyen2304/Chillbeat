@@ -5,7 +5,7 @@ import {
   useRouteMatch
 } from 'react-router-dom';
 import Dashboard from './Dashboard';
-import Earning from './Earnings';
+import FavoriteMusic from './FavoriteMusic';
 import Homepage from './Homepage';
 import Message from './Message';
 import Nav from './Navbar';
@@ -14,6 +14,7 @@ import AddRoomModal from './Modal/AddRoom';
 import InviteMemberModal from './Modal/inviteMemberModal';
 import Music from './Homepage/components/Music';
 import ControlMusic from './Homepage/components/ControlMusic';
+import iconSoluong from '../assets/images/iconSoLuong.png'
 
 
 function ChillBeat(props) {
@@ -26,7 +27,12 @@ function ChillBeat(props) {
         <Nav url={url} />
       </div>
       <div className="d-flex my-2 header">
-        <div> {peopleRandom} people listening you</div>
+        <div style={{fontWeight:'bold'}}>
+          <span style={{marginRight:6}}>
+                <img src={iconSoluong} alt="so_luong"/>
+          </span>
+           {peopleRandom} people listening you
+        </div>
         <div className="ms-auto">
           <UserInfo />
         </div>
@@ -36,7 +42,7 @@ function ChillBeat(props) {
           <Switch>
             <Route component={Homepage} exact path={`${path}${HOME_PAGE}`} />
             <Route component={Dashboard} path={`${path}${DASH_BOARD}`} />
-            <Route component={Earning} path={`${path}${EARNINGS}`} />
+            <Route component={FavoriteMusic} path={`${path}${EARNINGS}`} />
             <Route component={Message} path={`${path}${MESSAGE}`} />
             <Route component={Music} path={`${path}${HOME_PAGE}${MUSIC}`} />
           </Switch>

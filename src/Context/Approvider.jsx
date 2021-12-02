@@ -27,7 +27,7 @@ export default function AppProvider({ children }) {
     () => rooms.find((room) => room.id === selectedRoomId) || {},
     [rooms, selectedRoomId]
   );
-
+  
   const usersCondition = useMemo(() => {
     return {
       fieldName: 'uid',
@@ -37,7 +37,7 @@ export default function AppProvider({ children }) {
   }, [selectedRoom.members]);
 
   const members = useFirestore('users', usersCondition);
-
+  
   const songCondition = useMemo(() => {
     return {
       fieldName: 'userId',

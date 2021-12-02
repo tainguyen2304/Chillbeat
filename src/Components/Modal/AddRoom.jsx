@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { Form, Modal, Input } from 'antd';
 import { AppContext } from 'Context/Approvider';
 import { addDocument } from 'Components/Firebase/service';
@@ -6,21 +6,27 @@ import { AuthContext } from 'Context/AuthProvider';
 import { useTranslation } from "react-i18next";
 
 export default function AddRoomModal() {
-  const { isAddRoomVisible, setIsAddRoomVisible } = useContext(AppContext);
+  const { isAddRoomVisible, setIsAddRoomVisible, rooms } = useContext(AppContext);
   const { user: { uid } } = useContext(AuthContext);
   const [form] = Form.useForm();
+  const nameRef = useRef();
 
   const { t } = useTranslation()
 
   const handleOk = () => {
-    // handle logic
-    // add new room to firestore
-    addDocument('rooms', { ...form.getFieldsValue(), members: [uid] });
-
-    // reset form value
-    form.resetFields();
-
-    setIsAddRoomVisible(false);
+    const {name} = form.getFieldsValue()
+    if(name) {
+      const exitName = rooms.find(room => room.name === name)
+      if(!exitName) {
+        addDocument('rooms', { ...form.getFieldsValue(), members: [uid] })
+        // reset form value
+        form.resetFields()
+        setIsAddRoomVisible(false)
+        return 
+      }
+      alert('Tên phòng đã dược sử dụng');
+    }
+    else nameRef.current.focus();
   };
 
   const handleCancel = () => {
@@ -37,10 +43,12 @@ export default function AddRoomModal() {
         visible={isAddRoomVisible}
         onOk={handleOk}
         onCancel={handleCancel}
+        className="addRoom_buttonOke"
+        cancelT
       >
         <Form form={form} layout='vertical'>
           <Form.Item label={t('Tên phòng')} name='name'>
-            <Input placeholder={t('Nhập tên phòng')} />
+            <Input ref={nameRef} placeholder={t('Nhập tên phòng')} />
           </Form.Item>
           <Form.Item label={t('Mô tả')} name='description'>
             <Input.TextArea placeholder={t('Nhập mô tả')} />
