@@ -12,8 +12,6 @@ import {
 } from 'react-router-dom';
 import './App.scss';
 
-const ChillBeat = lazy(() => import('Components'))
-
 function App() {
   return (
       <Router className="App">
