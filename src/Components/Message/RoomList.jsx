@@ -46,7 +46,7 @@ const PanelStyled = styled(Panel)`
     }
     .add-room:hover {
       color:#fff;
-      background:#f2aad9;
+      background:hotpink;
       transition: all .2s linear;
     }
     .active {

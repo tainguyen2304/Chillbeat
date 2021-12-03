@@ -79,7 +79,7 @@ const MessageListStyled = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    heigth: 1rem;
+    height: 1rem;
     background-color: pink;
     border-radius: 6px;
     
@@ -107,13 +107,15 @@ function ChatWindown(props) {
   };
 
   const handleOnSubmit = () => {
-    addDocument('messages', {
-      text: inputValue,
-      uid,
-      photoURL,
-      roomId: selectedRoom.id,
-      displayName,
-    });
+    if(inputValue) {
+      addDocument('messages', {
+        text: inputValue,
+        uid,
+        photoURL,
+        roomId: selectedRoom.id,
+        displayName,
+      });
+    }
 
     form.resetFields(['message']);
 
@@ -209,7 +211,10 @@ function ChatWindown(props) {
                   autoComplete='off'
                 />
               </Form.Item>
-              <Button style={{backgroundColor:'pink', color:'white', fontWeight:"bold", border:'none'}} onClick={handleOnSubmit}>
+              <Button 
+                style={{backgroundColor:'hotpink', color:'white', fontWeight:"bold", border:'none'}} 
+                onClick={handleOnSubmit}
+              >
                 {t("Gửi")}
               </Button>
             </FormStyled>

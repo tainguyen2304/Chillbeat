@@ -1,11 +1,9 @@
 .Earning {
-    max-height: 100vh;
     overflow-y: auto;
     &::-webkit-scrollbar {
         width: 6px;
     }
     &::-webkit-scrollbar-thumb {
-        heigth: 1rem;
         background-color: #eee;
         border-radius: 6px;
         cursor: pointer;
@@ -27,5 +25,13 @@
                 
                 }
         }
+    }
+    .addFavoriteMusic {
+        position: absolute;
+        bottom: 5px;
+        right: 0;
+    }
+    .addFavoriteMusic:hover{
+        opacity: .7;
     }
 }
