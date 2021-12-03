@@ -44,7 +44,6 @@ export default function AddRoomModal() {
         onOk={handleOk}
         onCancel={handleCancel}
         className="addRoom_buttonOke"
-        cancelT
       >
         <Form form={form} layout='vertical'>
           <Form.Item label={t('Tên phòng')} name='name'>

@@ -29,7 +29,7 @@ function AddMusicFavorite({ nameSong, nameSingle, time, audio }) {
     }
     return (
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-            {exist ? <FileAddFilled /> : <FileAddOutlined />}
+            {exist ? <FileAddFilled style={{color:"hotpink"}} /> : <FileAddOutlined />}
         </div>
     );
 }

@@ -126,6 +126,7 @@ export default function InviteMemberModal() {
         onOk={handleOk}
         onCancel={handleCancel}
         destroyOnClose={true}
+        className="addRoom_buttonOke"
       >
         <Form form={form} layout='vertical'>
           <DebounceSelect
